@@ -194,6 +194,11 @@ filters using `Manufacturer` name. For example:
         class Meta:
             model = Product
             fields = ['category', 'in_stock', 'manufacturer__name']
+            
+    class ProductList(generics.ListAPIView):
+        queryset = Product.objects.all()
+        serializer_class = ProductSerializer
+        filter_class = ProductFilter
 
 This enables us to make queries like:
 
